@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Genre; // Assuming you have a Genre model
 use App\Models\Record; // Assuming you have a Record model
 
 class RecordController extends Controller
@@ -22,7 +23,8 @@ class RecordController extends Controller
      */
     public function create()
     {
-        return view('records.create');
+        $genres = Genre::all();
+        return view('records.create', compact('genres'));
     }
 
     /**
@@ -35,7 +37,7 @@ class RecordController extends Controller
         $newRecord = new Record();
         $newRecord->title = $data['title'];
         $newRecord->artist = $data['artist'];
-        $newRecord->genre = $data['genre'];
+        $newRecord->genre_id = $data['genre_id'];
         $newRecord->year = $data['year'];
 
         $newRecord->save();
@@ -57,7 +59,8 @@ class RecordController extends Controller
      */
     public function edit(Record $record)
     {
-        return view('records.edit', compact('record'));
+        $genres = Genre::all();
+        return view('records.edit', compact('record', 'genres'));
     }
 
     /**
@@ -69,7 +72,7 @@ class RecordController extends Controller
 
         $record->title = $data['title'];
         $record->artist = $data['artist'];
-        $record->genre = $data['genre'];
+        $record->genre_id = $data['genre_id'];
         $record->year = $data['year'];
 
         $record->update();
