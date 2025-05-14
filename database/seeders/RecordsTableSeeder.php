@@ -21,7 +21,7 @@ class RecordsTableSeeder extends Seeder
 
             $newRecord->title = $faker->sentence(2);
             $newRecord->artist = $faker->name();
-            // $newRecord->genre_id = $faker->word();
+            $newRecord->genre_id = rand(1, 10);
             $newRecord->year = $faker->dateTimeBetween('-50 years', 'now')->format('Y');
 
             $newRecord->save();

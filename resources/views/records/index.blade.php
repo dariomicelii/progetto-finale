@@ -24,7 +24,7 @@
             <tr>
                 <td>{{ $record->title }}</td>
                 <td>{{ $record->artist }}</td>
-                <td>{{ $record->genre }}</td>
+                <td>{{ $record->genre->name}}</td>
                 <td>{{ $record->year }}</td>
                 <td>
                    <a href="{{ route('records.show', $record) }}">Visualizza</a> 

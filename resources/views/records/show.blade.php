@@ -10,7 +10,7 @@
 </h3>
 
 <small>
-    {{ $record->genre }}
+    {{ $record->genre->name }}
 </small>
 <br>
 <small>
