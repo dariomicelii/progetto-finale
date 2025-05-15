@@ -10,4 +10,5 @@ class Record extends Model
     public function genre() {
         return $this->belongsTo(Genre::class);
     }
+    protected $fillable = ['title', 'artist', 'year', 'genre_id']; 
 }

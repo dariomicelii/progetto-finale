@@ -37,4 +37,17 @@ class RecordController extends Controller
             ]
         );
     }
+
+    public function store(Request $request) {
+    $data = $request->validate([
+        'title' => 'required|string',
+        'artist' => 'required|string',
+        'year' => 'required|integer',
+        'genre_id' => 'required|exists:genres,id',
+    ]);
+
+    $record = Record::create($data);
+
+    return response()->json(['success' => true, 'data' => $record], 201);
+}
 }
