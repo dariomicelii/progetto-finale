@@ -40,6 +40,12 @@ class RecordController extends Controller
         $newRecord->genre_id = $data['genre_id'];
         $newRecord->year = $data['year'];
 
+        if ($request->hasFile('cover_image')) {
+            $path = $request->file('cover_image')->store('covers', 'public');
+            $record->cover_image = $path;
+}
+
+
         $newRecord->save();
 
         return redirect()->route('records.show', $newRecord->id)->with('message', 'Record created successfully');
@@ -74,6 +80,12 @@ class RecordController extends Controller
         $record->artist = $data['artist'];
         $record->genre_id = $data['genre_id'];
         $record->year = $data['year'];
+
+        if ($request->hasFile('cover_image')) {
+            $path = $request->file('cover_image')->store('covers', 'public');
+            $record->cover_image = $path;
+}
+
 
         $record->update();
 

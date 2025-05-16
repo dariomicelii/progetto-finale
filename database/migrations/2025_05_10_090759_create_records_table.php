@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('artist');
             $table->string('genre');
             $table->string('year');
+            $table->string('cover_image')->nullable();
 
             $table->timestamps();
         });

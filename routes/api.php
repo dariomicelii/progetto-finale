@@ -11,8 +11,12 @@ use App\Http\Controllers\Api\GenreController;
 
 Route::get('records', [RecordController::class, 'index']);
 
+Route::get('/genres', [GenreController::class, 'index']);
+
 Route::get('records/{record}', [RecordController::class, 'show']);
 
 Route::post('records', [RecordController::class, 'store']);
 
-Route::get('/genres', [GenreController::class, 'index']);
+Route::put('/records/{id}', [RecordController::class, 'update']);
+
+Route::delete('/records/{id}', [RecordController::class, 'destroy']);
