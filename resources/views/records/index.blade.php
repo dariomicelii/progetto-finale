@@ -1,4 +1,4 @@
-@extends('layouts.records')
+@extends('layouts.index')
 
 @section('title', 'I tuoi dischi')
 
