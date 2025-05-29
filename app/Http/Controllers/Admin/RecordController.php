@@ -31,25 +31,26 @@ class RecordController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $data = $request->all();
+{
+    $data = $request->all();
 
-        $newRecord = new Record();
-        $newRecord->title = $data['title'];
-        $newRecord->artist = $data['artist'];
-        $newRecord->genre_id = $data['genre_id'];
-        $newRecord->year = $data['year'];
+    $newRecord = new Record();
+    $newRecord->title = $data['title'];
+    $newRecord->artist = $data['artist'];
+    $newRecord->genre_id = $data['genre_id'];
+    $newRecord->year = $data['year'];
+    $newRecord->cover_image = null; // Default value if no image is uploaded
 
-        if ($request->hasFile('cover_image')) {
-            $path = $request->file('cover_image')->store('covers', 'public');
-            $record->cover_image = $path;
+    if ($request->hasFile('cover_image')) {
+        $path = $request->file('cover_image')->store('covers', 'public');
+        $newRecord->cover_image = $path; // ✅ salva il path nel database
+    }
+
+    $newRecord->save();
+
+    return redirect()->route('records.index')->with('message', 'Record created successfully');
 }
 
-
-        $newRecord->save();
-
-        return redirect()->route('records.show', $newRecord->id)->with('message', 'Record created successfully');
-    }
 
     /**
      * Display the specified resource.

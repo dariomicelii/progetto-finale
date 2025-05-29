@@ -8,10 +8,15 @@
 </head>
 <body>
     <div class="container">
-        <h1>
-            @yield('title')
-        </h1>
-            @yield('content')
+        <div class="d-flex justify-content-center  flex-column py-4">
+            @section('cover_image')
+                <img src="@yield('cover_image')" alt="Cover Image" class="img-fluid w-50">
+                
+                <h1>
+                    @yield('title')
+                </h1>
+                @yield('content')
+            </div>
     </div>
 </body>
 </html>

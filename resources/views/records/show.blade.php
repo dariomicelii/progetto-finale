@@ -1,5 +1,6 @@
 @extends('layouts.records')
 
+@section('cover_image', asset('storage/' . $record->cover_image))
 @section('title', $record->title)
 
 @section('content')

@@ -4,7 +4,9 @@
 
 @section('content')
 
-<form action="{{ route('records.store') }}" method="POST">
+<form action="{{ route('records.store') }}" method="POST" enctype="multipart/form-data">
+
+    {{-- Includiamo il token CSRF per la sicurezza --}}
 
     @csrf
     
@@ -32,7 +34,11 @@
         <input type="text" name="year" id="year">
     </div>
 
-    <input type="submit" value="Salva">
+    <div class="form-control mb-3 d-flex flex-column">
+        <label for="cover_image">Copertina</label>
+        <input type="file" name="cover_image" id="cover_cover">
+    </div>
+    <input type="submit" value="Salva" class="btn btn-primary">
 
 </form>
 
